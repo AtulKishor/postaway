@@ -34,7 +34,7 @@ Postaway is a feature-rich Social Networking Platform built using Express and No
   - Sign Up: `POST /api/signup`
  
 - **Swagger UI:**
-- Swagger UI Url: /api-docs/
+- Swagger UI Url: `/api-docs/`
 
 - **Post Operations:**
   - Get All Posts: `GET /api/posts/all`
