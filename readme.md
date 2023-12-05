@@ -63,7 +63,7 @@ Postaway is a feature-rich Social Networking Platform built using Express and No
 ### Middleware
 
 - **Authentication:** Secures endpoints with JWT authentication.
-- **Error Pge:** Handles invalid routes and errors by displaying the custom error message.
+- **Error Page:** Handles invalid routes and errors by displaying the custom error message.
 - **File Upload:** Manages image uploads using Multer middleware.
 
 ## Project Setup
@@ -81,5 +81,3 @@ To run the project locally, follow these steps:
 - **GitHub:** [gautamuniverse](https://github.com/gautamuniverse)
 - **LinkedIn:** [Gautam](https://www.linkedin.com/in/gautam-116307bb/)
 - **Instagram:** [@gautamuniverse.in](https://www.instagram.com/gautamuniverse.in/)
-
-Feel free to reach out for any questions or collaboration opportunities!
