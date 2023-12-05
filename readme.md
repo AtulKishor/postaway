@@ -32,6 +32,9 @@ Postaway is a feature-rich Social Networking Platform built using Express and No
 - **User Authentication:**
   - Sign In: `POST /api/signin`
   - Sign Up: `POST /api/signup`
+ 
+- **Swagger UI:**
+- Swagger UI Url: /api-docs/
 
 - **Post Operations:**
   - Get All Posts: `GET /api/posts/all`
@@ -41,7 +44,7 @@ Postaway is a feature-rich Social Networking Platform built using Express and No
   - Delete Post: `DELETE /api/posts/{postId}`
   - Update Post: `PUT /api/posts/{postId}`
   - Filter Posts: `POST /api/posts/filter`
-  - Sort Posts: `GET /api/custom/sort`
+  - Sort Posts: `GET /api/posts/custom/sort`
 
 - **Like System:**
   - Get Post Likes: `GET /api/likes/{postId}`
