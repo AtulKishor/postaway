@@ -23,4 +23,4 @@ export const getUploadedImage =  (req, res) => {
       // If the file is not found, return a 404 Not Found
       res.status(404).send({ error: "File not found" });
     }
-  };
+  }

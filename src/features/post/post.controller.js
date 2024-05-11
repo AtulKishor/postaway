@@ -1,23 +1,26 @@
 import PostModel from "./post.model.js";
+import pagination from "../helper functions/pagination.js";
 
 export default class PostController {
   getALLPosts(req, res, next) {
     const result = PostModel.getALLPosts();
+    const pageNo = req.params.pageNo;
     //If no posts found
     if (!result.success) return res.status(404).send(result.msg);
     else {
-      return res.status(200).send(result.msg);
+      return res.status(200).send(pagination(result.msg,pageNo));
     }
   }
 
   getUserPosts(req, res, next) {
     const userId = req.userId; //Because the userId is inserted in req while    generating the token for user
     const result = PostModel.getUserPosts(userId);
+    const pageNo = req.params.pageNo;
 
     //If no posts found
     if (!result.success) return res.status(404).send(result.msg);
     else {
-      return res.status(200).send(result.msg);
+      return res.status(200).send(pagination(result.msg,pageNo));
     }
   }
 
@@ -73,18 +76,20 @@ export default class PostController {
   filterPost(req, res) {
     const {searchContent} = req.body;
 
+    const pageNo = req.params.pageNo;
     const result = PostModel.filterPost(searchContent);
 
     if (!result.success) return res.status(404).send(result.msg);
-    else return res.status(200).send(result.msg);
+    else return res.status(200).send(pagination(result.msg,pageNo));
   }
 
   //Get sorted posts in ascending order of date of posting
   getSortedPosts(req, res){
     const result = PostModel.getSortedPosts();
+    const pageNo = req.params.pageNo;
 
     if (!result.success) return res.status(404).send(result.msg);
-    else return res.status(200).send(result.msg);
+    else return res.status(200).send(pagination(result.msg,pageNo));
   }
 
 

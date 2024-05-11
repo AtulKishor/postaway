@@ -1,14 +1,16 @@
 import CommentsModel from "./comments.model.js";
+import pagination from "../helper functions/pagination.js";
 
 export default class CommentsController {
   //Retrieve all comments for a specific post by the postId
   getAllComments(req, res) {
     const postId = req.params.postId;
+    const pageNo = req.params.pageNo;
 
     const result = CommentsModel.getAllComments(postId);
 
     if (!result.success) return res.status(404).send(result.msg);
-    else return res.status(200).send(result.msg);
+    else return res.status(200).send(pagination(result.msg,pageNo));
   }
 
   // Add a new comment to a specific post

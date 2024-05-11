@@ -8,10 +8,10 @@ const postRouter = express.Router();
 const postController = new PostController();
 
 //Get all the posts
-postRouter.get('/all', postController.getALLPosts);
+postRouter.get('/all/:pageNo', postController.getALLPosts);
 
 //Get posts based on user credentials
-postRouter.get('/', postController.getUserPosts);
+postRouter.get('/:pageNo', postController.getUserPosts);
 
 //Get specific post by id
 postRouter.get('/:id', postController.getPostById);
@@ -26,9 +26,9 @@ postRouter.delete('/:id', postController.deletePost);
 postRouter.put('/:id',upload.single('imageUrl'), postController.updatePost);
 
 //Get filtered posts based on the caption content
-postRouter.post('/filter', postController.filterPost);
+postRouter.post('/filter:pageNo', postController.filterPost);
 
 //Get sorted posts in ascending order of date of posting
-postRouter.get('/custom/sort', postController.getSortedPosts);
+postRouter.get('/custom/sort/:pageNo', postController.getSortedPosts);
 
 export default postRouter;

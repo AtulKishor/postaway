@@ -89,11 +89,23 @@
         }
       }
     },
-    "/api/posts/all": {
+    "/api/posts/all/{pageNo}": {
       "get": {
-        "tags": ["Post"],
-        "summary": "Get all the posts",
-        "description": "Route to get all the posts present in the application",
+        "tags": ["Post"],        
+        "summary": "Retrieve a page of posts",
+        "description": "Get a paginated list of all posts, where each page contains a subset of posts.",
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "path",
+            "description": "The page number to retrieve",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
         "security": [{ "JWT": {} }],
         "responses": {
           "200": {
@@ -105,44 +117,24 @@
         }
       }
     },
-    "/api/posts/": {
+    "/api/posts/{pageNo}": {
       "get": {
         "tags": ["Post"],
         "summary": "Get all the posts for a specific User",
         "description": "Route to get all the posts posted by a specific user, the posts will be fetched based on the userId which is internally taken from the Token",
         "security": [{ "JWT": {} }],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "No posts found!"
-          }
-        }
-      },
-      "post": {
-        "tags": ["Post"],
-        "summary": "Create a new post",
-        "description": "Post route to create a new post. Provide caption in req body and image file.",
-        "security": [{ "JWT": {} }],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "imageUrl": {
-                    "type": "string",
-                    "format": "binary"
-                  },
-                  "caption": {
-                    "type": "string"
-                  }
-                }
-              }
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "path",
+            "required": true,
+            "description": "Page number to retrieve",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
             }
           }
-        },
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -164,6 +156,7 @@
             "name": "postId",
             "in": "path",
             "required": true,
+            "description": "ID of the post to retrieve",
             "schema": {
               "type": "string"
             }
@@ -188,6 +181,7 @@
             "name": "postId",
             "in": "path",
             "required": true,
+            "description": "ID of the post to delete",
             "schema": {
               "type": "string"
             }
@@ -212,6 +206,7 @@
             "name": "postId",
             "in": "path",
             "required": true,
+            "description": "ID of the post to update",
             "schema": {
               "type": "string"
             }
@@ -245,12 +240,24 @@
         }
       }
     },
-    "/api/posts/filter": {
+    "/api/posts/filter/{pageNo}": {
       "post": {
         "tags": ["Post"],
         "summary": "Get filtered posts based on the caption search query",
         "description": "Route to get filtered posts based on the caption search query, Provide the search query in the req body, name the field as 'searchContent'",
         "security": [{ "JWT": {} }],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "path",
+            "required": true,
+            "description": "Page number to retrieve",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -275,12 +282,24 @@
         }
       }
     },
-    "/api/posts/custom/sort": {
+    "/api/posts/custom/sort/{pageNo}": {
       "get": {
         "tags": ["Post"],
         "summary": "Get sorted posts in ascending order of the date they were created",
         "description": "Route to get sorted posts in ascending order of the date they were created",
         "security": [{ "JWT": {} }],
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "path",
+            "required": true,
+            "description": "Page number to retrieve",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -290,7 +309,7 @@
           }
         }
       }
-    },
+    },    
     "/api/likes/{postId}": {
       "get": {
         "tags": ["Like"],
